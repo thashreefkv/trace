@@ -34,7 +34,7 @@ tauri-plugin-global-shortcut = "2"
 project-manager-shared = { path = "shared" }
 tokio = { version = "1", features = ["sync"] }
 tokio-util = { version = "0.7", features = ["rt"] }
-zip = "2"
+zip = "8"
 base64 = "0.22"
 axum = "0.7"
 tower = "0.5"
