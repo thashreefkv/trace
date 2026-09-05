@@ -24,7 +24,7 @@ regex = "1"
 once_cell = "1"
 sha2 = "0.10"
 zip = "2"
-if-addrs = "0.13"
+if-addrs = "0.15"
 rand = "0.8"
 url = "2"
 
