@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>NSMicrophoneUsageDescription</key>
+  <string>Trace records meeting audio to generate AI-powered meeting minutes.</string>
+  <key>NSSpeechRecognitionUsageDescription</key>
+  <string>Trace uses speech recognition to transcribe voice input in the Ask interface and during meeting recordings.</string>
+</dict>
+</plist>

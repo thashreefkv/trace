@@ -1,0 +1,9 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "drive-preview",
+  "description": "Allow Google Drive preview windows to navigate to external URLs",
+  "windows": ["preview_*"],
+  "permissions": [
+    "core:default"
+  ]
+}

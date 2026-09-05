@@ -1,0 +1,11 @@
+-- Section 6.2 — RL feedback surface.
+--
+-- Persists the per-turn retrieval score breakdown so the "Why this answer?"
+-- expander survives a chat reload. `scored_nodes_json` stores the JSON-
+-- serialized `Vec<ScoredBrainNode>` captured during the Ask agent loop;
+-- `retrieval_query` stores the query the brain actually saw (which can
+-- diverge from the user's question after rephrasing/expansion).
+--
+-- The columns themselves are added via `ensure_table_column` in db.rs
+-- so the migration stays idempotent on re-run. This file is intentionally
+-- empty of DDL (the ensure_table_column path runs unconditionally).

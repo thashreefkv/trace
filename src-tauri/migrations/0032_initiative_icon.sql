@@ -1,0 +1,2 @@
+ALTER TABLE initiatives ADD COLUMN icon       TEXT NOT NULL DEFAULT 'target';
+ALTER TABLE initiatives ADD COLUMN icon_color TEXT NOT NULL DEFAULT '#6366f1';

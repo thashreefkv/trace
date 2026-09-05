@@ -1,0 +1,246 @@
+[
+  {
+    "kind": "retrieval",
+    "name": "blocked-work",
+    "input_json": { "query": "what is blocked right now" },
+    "expectation_json": {
+      "expected_entity_ids": ["del_REPLACE_ME_1", "del_REPLACE_ME_2"],
+      "top_k": 3
+    },
+    "notes": "Replace expected_entity_ids with 2-3 deliverable IDs that have non-empty blocker_reason."
+  },
+  {
+    "kind": "retrieval",
+    "name": "focus-today",
+    "input_json": { "query": "what should I work on today" },
+    "expectation_json": {
+      "expected_entity_ids": ["del_REPLACE_ME_FOCUSED"],
+      "top_k": 5
+    },
+    "notes": "Replace with deliverables flagged is_focused or marked for this week."
+  },
+  {
+    "kind": "retrieval",
+    "name": "stale-important-work",
+    "input_json": { "query": "important work that has gone stale" },
+    "expectation_json": {
+      "expected_entity_ids": ["del_REPLACE_ME_STALE"],
+      "top_k": 5
+    },
+    "notes": "Replace with high-priority deliverables whose updated_at is >14d old."
+  },
+  {
+    "kind": "retrieval",
+    "name": "stakeholder-scoped",
+    "input_json": {
+      "query": "what is in flight with Alice",
+      "focus_entity_id": "stk_REPLACE_ME_ALICE"
+    },
+    "expectation_json": {
+      "expected_entity_ids": ["del_REPLACE_ME_ALICE_1", "del_REPLACE_ME_ALICE_2"],
+      "top_k": 5
+    },
+    "notes": "Replace focus_entity_id with a real stakeholder ID; expected IDs are deliverables linked to that stakeholder."
+  },
+  {
+    "kind": "retrieval",
+    "name": "initiative-neighborhood",
+    "input_json": {
+      "query": "Q2 launch dependencies",
+      "focus_entity_id": "ini_REPLACE_ME_Q2"
+    },
+    "expectation_json": {
+      "expected_entity_ids": ["del_REPLACE_ME_Q2_DEP_1"],
+      "top_k": 5
+    },
+    "notes": "Tests focus-anchored expansion via the brain neighborhood. Replace with a real initiative + dependent deliverable."
+  },
+
+  {
+    "kind": "ask",
+    "name": "blocker-explanation",
+    "input_json": {
+      "question": "Why is the auth refactor blocked?"
+    },
+    "expectation_json": {
+      "expected_facts": [
+        "Waiting on security review",
+        "Owner is the security team"
+      ],
+      "expected_citation_kinds": ["deliverable", "stakeholder"],
+      "min_aggregate_score": 0.7
+    },
+    "notes": "Adjust expected_facts to match a real blocker in your workspace."
+  },
+  {
+    "kind": "ask",
+    "name": "decision-summary",
+    "input_json": {
+      "question": "What did we decide in the last leadership review?"
+    },
+    "expectation_json": {
+      "expected_facts": [
+        "Ship Q2 launch on time",
+        "Defer the mobile redesign"
+      ],
+      "expected_citation_kinds": ["meeting"],
+      "min_aggregate_score": 0.7
+    },
+    "notes": "Replace expected_facts with two real decisions from a recent meeting transcript."
+  },
+  {
+    "kind": "ask",
+    "name": "timeline-query",
+    "input_json": {
+      "question": "When is the next Q2 milestone due?"
+    },
+    "expectation_json": {
+      "expected_facts": [
+        "Due 2026-06-15"
+      ],
+      "expected_citation_kinds": ["deliverable"],
+      "min_aggregate_score": 0.7
+    },
+    "notes": "Replace with an actual deliverable deadline."
+  },
+  {
+    "kind": "ask",
+    "name": "push-back-on-bad-premise",
+    "input_json": {
+      "question": "Why did we ship the iOS app last week?"
+    },
+    "expectation_json": {
+      "expected_facts": [
+        "The iOS app has not shipped",
+        "Current state is in-review or earlier"
+      ],
+      "min_aggregate_score": 0.6
+    },
+    "notes": "Tests that the model pushes back on a false premise rather than hallucinating. Lower threshold because tone is the dominant signal here."
+  },
+  {
+    "kind": "ask",
+    "name": "factual-lookup-flash-judge",
+    "input_json": {
+      "question": "Who owns the billing migration?"
+    },
+    "expectation_json": {
+      "expected_facts": [
+        "Owner is Bob"
+      ],
+      "expected_citation_kinds": ["stakeholder", "deliverable"],
+      "min_aggregate_score": 0.7,
+      "judge_model": "flash"
+    },
+    "notes": "Uses the cheap Flash judge to demonstrate per-fixture model override."
+  },
+
+  {
+    "kind": "classification",
+    "name": "action-required-thread",
+    "input_json": { "thread_id": "thread_REPLACE_ME_ACTION" },
+    "expectation_json": {
+      "intent": "request",
+      "action_required": true
+    },
+    "notes": "Replace thread_id with a Gmail thread that genuinely requires user action."
+  },
+  {
+    "kind": "classification",
+    "name": "newsletter-detection",
+    "input_json": { "thread_id": "thread_REPLACE_ME_NEWSLETTER" },
+    "expectation_json": {
+      "category": "newsletter",
+      "priority": "low",
+      "action_required": false
+    },
+    "notes": "Replace with a thread that should be classified as a newsletter / digest."
+  },
+  {
+    "kind": "classification",
+    "name": "urgent-priority",
+    "input_json": { "thread_id": "thread_REPLACE_ME_URGENT" },
+    "expectation_json": {
+      "category": "work",
+      "priority": "urgent",
+      "action_required": true
+    },
+    "notes": "Replace with a thread the classifier should mark urgent."
+  },
+  {
+    "kind": "classification",
+    "name": "intent-question",
+    "input_json": { "thread_id": "thread_REPLACE_ME_QUESTION" },
+    "expectation_json": {
+      "intent": "question"
+    },
+    "notes": "Replace with a thread whose primary intent is asking the user a question."
+  },
+  {
+    "kind": "classification",
+    "name": "archive-candidate",
+    "input_json": { "thread_id": "thread_REPLACE_ME_ARCHIVE" },
+    "expectation_json": {
+      "category": "archive",
+      "action_required": false
+    },
+    "notes": "Replace with an auto-generated alert or receipt that should be archived."
+  },
+
+  {
+    "kind": "promotion",
+    "name": "task-hint",
+    "input_json": {
+      "capture_text": "ping Alex about Q2 pricing"
+    },
+    "expectation_json": {
+      "expected_kind": "task"
+    },
+    "notes": "Should promote to a task (short verb-led action). Awaits Section 4."
+  },
+  {
+    "kind": "promotion",
+    "name": "deliverable-hint",
+    "input_json": {
+      "capture_text": "build a self-serve onboarding flow for the SMB tier"
+    },
+    "expectation_json": {
+      "expected_kind": "deliverable"
+    },
+    "notes": "Should promote to a new deliverable (scope of work, not a single action). Awaits Section 4."
+  },
+  {
+    "kind": "promotion",
+    "name": "initiative-hint",
+    "input_json": {
+      "capture_text": "rethink our entire go-to-market for the SMB segment in H2"
+    },
+    "expectation_json": {
+      "expected_kind": "initiative"
+    },
+    "notes": "Should promote to a strategic initiative. Awaits Section 4."
+  },
+  {
+    "kind": "promotion",
+    "name": "target-id-required",
+    "input_json": {
+      "capture_text": "review the security review notes Alice sent"
+    },
+    "expectation_json": {
+      "expected_kind": "task",
+      "expected_target_id": "del_REPLACE_ME_AUTH_REFACTOR"
+    },
+    "notes": "Tests target-id resolution (the strongest learning signal). Replace expected_target_id with the matching deliverable."
+  },
+  {
+    "kind": "promotion",
+    "name": "ambiguous-task",
+    "input_json": {
+      "capture_text": "follow up on pricing"
+    },
+    "expectation_json": {
+      "expected_kind": "task"
+    },
+    "notes": "Deliberately ambiguous — should still pick task, no specific target_id required."
+  }
+]
