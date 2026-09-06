@@ -598,7 +598,7 @@ Use parameterized SQL for values. Do not restore frontend raw-SQL access.
 - Treat rendered email, web, AI, and file metadata as untrusted.
 - Use the shared safe-link helpers before opening dynamic URLs.
 - Preserve keyboard and window behavior in the Tauri runtime.
-- Follow [.claude/design-system.md](.claude/design-system.md) for visual conventions.
+- Follow [docs/design-system.md](docs/design-system.md) for visual conventions.
 - Test narrow windows as well as the standard 1040 × 720 desktop size.
 
 ### Rust changes
