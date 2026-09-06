@@ -18,6 +18,7 @@ src-tauri/bin/mcp-server-*
 # Local-only project context and tool artifacts
 .private/
 .playwright-cli/
+.claude/
 
 # Environment and credential material
 .env
@@ -43,11 +44,9 @@ secrets/
 *.sqlite3
 
 # Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+.vscode/
+.idea/
 .DS_Store
-.claude/settings.local.json
 *.suo
 *.ntvs*
 *.njsproj
