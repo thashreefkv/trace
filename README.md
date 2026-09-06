@@ -11,8 +11,16 @@
   [![macOS](https://img.shields.io/badge/macOS-11%2B-111827?style=flat-square&logo=apple&logoColor=white)](https://www.apple.com/macos/)
   [![License](https://img.shields.io/badge/license-not%20yet%20selected-71717a?style=flat-square)](#license)
 
-  **A local-first desktop workspace that turns projects, conversations, files, meetings, and commitments into one connected map of work.**
+  ## Your work has a memory. Trace connects it.
+
+  **Trace is a local-first memory layer for your work.** It connects projects, decisions, conversations, meetings, files, and commitments so you can recover not just **what happened**, but **why**.
+
+  **Capture → Connect → Retrieve → Act**
 </div>
+
+Trace keeps the work you deliver and the context that created it in the same system. Before a meeting, it can bring back the relevant decisions, emails, files, and open commitments. When a decision is questioned, it can lead you back to the evidence. When you need to know what matters next, it can reason over the connected context instead of treating every task as an isolated row.
+
+**Remember the decision. Find the evidence. Know what matters next.**
 
 > [!IMPORTANT]
 > Trace is an early-stage, macOS-first project. It is useful today, but its data model and APIs can still change. Back up important data and review AI-generated output before relying on it.
